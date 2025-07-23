@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predictive Pulse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #121212;
+            padding: 40px;
+        }
+        .container {
+            background: white;
+            max-width: 450px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px #1E1E1E(0, 0, 0, 0.15);
+        }
+        h2 {
+            text-align: center;
+            color: #000000;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 25px;
+            width: 100%;
+            padding: 10px;
+            background: #D81B60;
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #AD1457;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Blood Pressure Prediction</h2>
+        <form action="/predict" method="post">
+            <label for="Age">Age:</label>
+            <input type="number" name="Age" required>
+
+            <label for="Gender">Gender (0 = Male, 1 = Female):</label>
+            <input type="number" name="Gender" required>
+
+            <label for="Weight">Weight:</label>
+            <input type="number" name="Weight" required>
+
+            <label for="BMI">BMI:</label>
+            <input type="number" name="BMI" required>
+
+            <label for="Smoking">Smoking (0 = No, 1 = Yes):</label>
+            <input type="number" name="Smoking" required>
+
+            <label for="ExerciseHours">Exercise Hours/Week:</label>
+            <input type="number" name="ExerciseHours" required>
+
+            <label for="StressLevel">Stress Level (1–10):</label>
+            <input type="number" name="StressLevel" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
